@@ -1,0 +1,22 @@
+# Solo para desarrollo local: levanta la base que usa el backend en tu Mac.
+# El compose de produccion vive en /Users/tom/portfolio/deploy/.
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: portfolio_db_dev
+    environment:
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: portfolio
+      POSTGRES_DB: portfolio
+    ports:
+      # 5433 en el host para no chocar con otros Postgres locales.
+      - "5433:5432"
+    volumes:
+      - portfolio_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portfolio"]
+      interval: 5s
+      retries: 5
+
+volumes:
+  portfolio_pgdata:

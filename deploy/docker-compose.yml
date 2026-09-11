@@ -1,0 +1,82 @@
+# Stack de produccion del portfolio.
+# Traefik lo provee el stack de n8n (es el dueno de los puertos 80/443),
+# por eso aca no se publica ningun puerto: todo entra por la red n8n_default.
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: portfolio_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - portfolio_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      retries: 5
+    networks:
+      - internal
+
+  api:
+    build:
+      context: ../backend
+    container_name: portfolio_api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      SECRET_KEY: ${SECRET_KEY}
+      CORS_ORIGINS: https://${SITE_DOMAIN}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      NOTIFICATION_EMAIL: ${NOTIFICATION_EMAIL}
+    # Las migraciones corren al arrancar: un deploy con esquema nuevo se aplica solo.
+    command: >
+      sh -c "alembic upgrade head &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --proxy-headers"
+    networks:
+      - internal
+      - n8n_default
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=n8n_default
+      - traefik.http.routers.portfolio-api.rule=Host(`${API_DOMAIN}`)
+      - traefik.http.routers.portfolio-api.entrypoints=websecure
+      - traefik.http.routers.portfolio-api.tls.certresolver=mytlschallenge
+      - traefik.http.services.portfolio-api.loadbalancer.server.port=8000
+
+  web:
+    build:
+      context: ../frontend
+      args:
+        VITE_API_URL: https://${API_DOMAIN}
+    container_name: portfolio_web
+    restart: unless-stopped
+    depends_on:
+      - api
+    networks:
+      - n8n_default
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=n8n_default
+      - traefik.http.routers.portfolio-web.rule=Host(`${SITE_DOMAIN}`)
+      - traefik.http.routers.portfolio-web.entrypoints=websecure
+      - traefik.http.routers.portfolio-web.tls.certresolver=mytlschallenge
+      - traefik.http.services.portfolio-web.loadbalancer.server.port=80
+
+volumes:
+  portfolio_pgdata:
+
+networks:
+  internal:
+  n8n_default:
+    external: true

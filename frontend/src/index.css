@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  /* Editorial, monochrome palette: warm off-white paper, near-black ink.
+     No brand accent color on purpose — the only color in the whole UI is
+     the small "open to work" status dot, everything else is black/white/gray. */
+  --color-paper: #eeece5;
+  --color-surface: #f8f7f3;
+  --color-surface-2: #e7e4da;
+  --color-line: #dcd9cd;
+  --color-ink: #16150f;
+  --color-muted: #6f6d62;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
+  /* Subtle paper grain, tiled. Pure CSS, no image asset. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Deliberately no dark mode: this design commits to the light editorial
+     look everywhere, the same way the reference site does. */
+}

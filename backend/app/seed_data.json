@@ -1,0 +1,136 @@
+{
+  "profile": {
+    "full_name": "Tomas Via",
+    "headline": "Advanced Information Systems Engineering Student | Backend, Frontend & AI Automation",
+    "bio": "Advanced Information Systems Engineering student with hands-on experience in backend and frontend development, automation workflows, and agile methodologies. I've worked in technical teams contributing to scalable software solutions, web applications, and AI-driven automations. Passionate about continuous learning, problem-solving, and building software that actually works in production.",
+    "email": "tomasgabrielvia@gmail.com",
+    "location": "Mendoza, Argentina",
+    "github_url": "",
+    "linkedin_url": "https://www.linkedin.com/in/tomas-via-b39988215",
+    "cv_url": "/cv.pdf",
+    "avatar_url": ""
+  },
+  "projects": [
+    {
+      "slug": "syscow",
+      "title": "Syscow",
+      "summary": "Livestock management platform: Rails 8 API with JWT auth and a Next.js frontend.",
+      "description": "A system for managing cattle operations: animals, lots, fields, breeds, vaccinations, treatments, and weight/feed records. Backend built with Ruby on Rails 8, Devise + JWT auth, and policy-based authorization (Pundit); frontend in Next.js consuming the API. Deployed on a self-managed VPS behind Traefik, with automatic HTTPS via Let's Encrypt.",
+      "tech_stack": ["Ruby on Rails", "Next.js", "PostgreSQL", "Docker", "Traefik", "JWT"],
+      "repo_url": "",
+      "live_url": "https://syscow.srv1596651.hstgr.cloud",
+      "image_url": "",
+      "featured": true,
+      "position": 1
+    },
+    {
+      "slug": "car-price-estimator",
+      "title": "Car price estimator pipeline",
+      "summary": "Data pipeline built with Apache Airflow to estimate used car prices.",
+      "description": "Capstone project at UTN (team of 3): an Airflow-orchestrated pipeline that processes and models used car data to estimate market price. Built collaboratively applying data engineering best practices.",
+      "tech_stack": ["Python", "Apache Airflow", "Pandas", "PostgreSQL"],
+      "repo_url": "",
+      "live_url": "",
+      "image_url": "",
+      "featured": true,
+      "position": 2
+    },
+    {
+      "slug": "admin-management-system",
+      "title": "Administrative management system",
+      "summary": "Ruby on Rails app for managing appointments and administrative processes.",
+      "description": "Personal project (2025): a Ruby on Rails web application for managing appointments and administrative processes, applying object-oriented programming, MVC architecture, and a frontend built with HTML, CSS, JavaScript and TypeScript.",
+      "tech_stack": ["Ruby on Rails", "TypeScript", "JavaScript", "HTML", "CSS"],
+      "repo_url": "",
+      "live_url": "",
+      "image_url": "",
+      "featured": false,
+      "position": 3
+    },
+    {
+      "slug": "keramike",
+      "title": "Keramike",
+      "summary": "Website deployed on a self-managed VPS with Docker and automatic certificates.",
+      "description": "Site for keramikee.com, deployed on self-managed infrastructure (Hostinger VPS) with Docker and Traefik as a reverse proxy, with automatic TLS certificate renewal via Let's Encrypt.",
+      "tech_stack": ["Docker", "Traefik", "Let's Encrypt"],
+      "repo_url": "",
+      "live_url": "https://keramikee.com",
+      "image_url": "",
+      "featured": false,
+      "position": 4
+    }
+  ],
+  "experience": [
+    {
+      "company": "OSEP Mendoza",
+      "role": "Automation & AI Intern",
+      "location": "Mendoza, Argentina",
+      "start_date": "2026-03-18",
+      "end_date": null,
+      "description": "Developed WhatsApp automation workflows using n8n. Worked with PostgreSQL databases for data management and integration. Integrated AI solutions using OpenAI Platform APIs. Collaborated on automation and optimization projects focused on operational efficiency.",
+      "position": 1
+    },
+    {
+      "company": "Red Salud Mendoza (RST)",
+      "role": "Backend & Frontend Intern",
+      "location": "Mendoza, Argentina",
+      "start_date": "2024-05-19",
+      "end_date": "2024-08-20",
+      "description": "3-month internship. Worked on backend and frontend development tasks in collaborative software projects using JavaScript, TypeScript, React, Python, HTML, CSS, Git and GitHub. Participated in agile workflows using SCRUM and Kanban. Collaborated with multidisciplinary teams to improve project efficiency and delivery.",
+      "position": 2
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Tecnológica Nacional (UTN)",
+      "degree": "Information Systems Engineering",
+      "start_date": "2021-03-01",
+      "end_date": null,
+      "description": "4th year, in progress.",
+      "position": 1
+    },
+    {
+      "institution": "Instituto Leonardo Murialdo",
+      "degree": "Bachelor's Degree in Economics and Accounting Administration",
+      "start_date": "2015-03-01",
+      "end_date": "2020-12-01",
+      "description": "",
+      "position": 2
+    }
+  ],
+  "skills": [
+    {"name": "Python", "category": "languages", "level": 4, "position": 1},
+    {"name": "TypeScript", "category": "languages", "level": 4, "position": 2},
+    {"name": "JavaScript", "category": "languages", "level": 4, "position": 3},
+    {"name": "Ruby", "category": "languages", "level": 3, "position": 4},
+    {"name": "Java", "category": "languages", "level": 3, "position": 5},
+    {"name": "SQL", "category": "languages", "level": 4, "position": 6},
+    {"name": "FastAPI", "category": "backend", "level": 4, "position": 1},
+    {"name": "Ruby on Rails", "category": "backend", "level": 3, "position": 2},
+    {"name": "Spring Boot", "category": "backend", "level": 3, "position": 3},
+    {"name": "PostgreSQL", "category": "backend", "level": 4, "position": 4},
+    {"name": "React", "category": "frontend", "level": 4, "position": 1},
+    {"name": "Next.js", "category": "frontend", "level": 3, "position": 2},
+    {"name": "HTML/CSS", "category": "frontend", "level": 4, "position": 3},
+    {"name": "Tailwind CSS", "category": "frontend", "level": 3, "position": 4},
+    {"name": "Figma", "category": "frontend", "level": 3, "position": 5},
+    {"name": "n8n", "category": "ai & automation", "level": 4, "position": 1},
+    {"name": "OpenAI Platform", "category": "ai & automation", "level": 3, "position": 2},
+    {"name": "Apache Airflow", "category": "ai & automation", "level": 3, "position": 3},
+    {"name": "Docker", "category": "devops", "level": 4, "position": 1},
+    {"name": "Linux / VPS", "category": "devops", "level": 3, "position": 2},
+    {"name": "Git", "category": "devops", "level": 4, "position": 3},
+    {"name": "Scrum / Kanban", "category": "devops", "level": 4, "position": 4}
+  ],
+  "certifications": [
+    {
+      "name": "Cybersecurity Foundations Bootcamp",
+      "issuer": "Cybersecurity Institute · BASE4 Security",
+      "issued_date": "2026-09-07",
+      "credential_id": "B4-2026-ELYDF5",
+      "credential_url": "",
+      "description": "Eight-module program covering systems fundamentals, cybersecurity and the digital ecosystem, risk/governance/compliance, incident management and digital forensics, blue team operations, threats and attack TTPs, offensive security and ethical hacking, and AppSec/DevSecOps. Passed the final integrative exam.",
+      "position": 1
+    }
+  ]
+}
