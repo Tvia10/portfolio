@@ -31,7 +31,7 @@ services:
       ENVIRONMENT: production
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       SECRET_KEY: ${SECRET_KEY}
-      CORS_ORIGINS: https://${SITE_DOMAIN}
+      CORS_ORIGINS: https://${SITE_DOMAIN},https://www.${SITE_DOMAIN}
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       SMTP_HOST: ${SMTP_HOST}
@@ -68,7 +68,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=n8n_default
-      - traefik.http.routers.portfolio-web.rule=Host(`${SITE_DOMAIN}`)
+      - traefik.http.routers.portfolio-web.rule=Host(`${SITE_DOMAIN}`) || Host(`www.${SITE_DOMAIN}`)
       - traefik.http.routers.portfolio-web.entrypoints=websecure
       - traefik.http.routers.portfolio-web.tls.certresolver=mytlschallenge
       - traefik.http.services.portfolio-web.loadbalancer.server.port=80
