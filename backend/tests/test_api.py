@@ -27,6 +27,16 @@ def test_login_with_wrong_password_fails(client, admin_headers):
     assert response.status_code == 401
 
 
+def test_login_is_rate_limited_against_brute_force(client, admin_headers):
+    for _ in range(10):
+        client.post("/api/auth/login", data={"username": "admin@test.local", "password": "nope"})
+
+    blocked = client.post(
+        "/api/auth/login", data={"username": "admin@test.local", "password": "nope"}
+    )
+    assert blocked.status_code == 429
+
+
 def test_admin_can_create_and_fetch_project(client, admin_headers):
     created = client.post("/api/projects", json=PROJECT, headers=admin_headers)
     assert created.status_code == 201

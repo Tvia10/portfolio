@@ -29,6 +29,11 @@ def db_session():
 
 @pytest.fixture
 def client(db_session):
+    # El rate limiter guarda sus contadores en memoria a nivel de proceso, y
+    # el TestClient siempre pega desde la misma IP falsa. Sin resetear, los
+    # tests comparten cupo entre si y un test posterior puede fallar por un
+    # 429 que en realidad "gastaron" tests anteriores.
+    app.state.limiter.reset()
     app.dependency_overrides[get_db] = lambda: db_session
     with TestClient(app) as test_client:
         yield test_client
