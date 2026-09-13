@@ -1,8 +1,8 @@
 {
   "profile": {
     "full_name": "Tomas Via",
-    "headline": "Advanced Information Systems Engineering Student | Backend, Frontend & AI Automation",
-    "bio": "Advanced Information Systems Engineering student with hands-on experience in backend and frontend development, automation workflows, and agile methodologies. I've worked in technical teams contributing to scalable software solutions, web applications, and AI-driven automations. Passionate about continuous learning, problem-solving, and building software that actually works in production.",
+    "headline": "Final-Year Information Systems Engineering Student | Backend, Frontend & AI Automation",
+    "bio": "Final-year Information Systems Engineering student with hands-on experience in backend and frontend development, automation workflows, and agile methodologies. I've worked in technical teams contributing to scalable software solutions, web applications, and AI-driven automations. Passionate about continuous learning, problem-solving, and building software that actually works in production.",
     "email": "tomasgabrielvia@gmail.com",
     "location": "Mendoza, Argentina",
     "github_url": "",
@@ -86,7 +86,7 @@
       "degree": "Information Systems Engineering",
       "start_date": "2021-03-01",
       "end_date": null,
-      "description": "4th year, in progress.",
+      "description": "5th (final) year, in progress.",
       "position": 1
     },
     {
