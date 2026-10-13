@@ -39,7 +39,7 @@ function initials(name: string): string {
     .join('')
 }
 
-/** El apellido va en itálica y color acento: el toque "artístico" del hero. */
+/** El apellido va en itálica: el toque "artístico" del hero. */
 function DisplayName({ name }: { name: string }) {
   const parts = name.split(' ')
   if (parts.length < 2) return <>{name}</>
@@ -148,7 +148,7 @@ export function Home() {
             <img
               src={profile.avatar_url}
               alt={profile.full_name}
-              className="h-full w-full rounded-[1.6rem] object-cover grayscale contrast-110 transition duration-700 group-hover:grayscale-0"
+              className="h-full w-full rounded-[1.6rem] object-cover"
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center text-6xl font-bold text-muted">
