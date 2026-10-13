@@ -13,7 +13,7 @@ export function Section({ id, title, eyebrow, subtitle, children }: Props) {
     <section id={id} className="mx-auto w-full max-w-5xl px-5 py-20">
       <div className="mb-8 h-px w-16 bg-accent/60" />
       <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
-        <h2 className="font-display text-4xl text-ink sm:text-6xl">{title}</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-5xl">{title}</h2>
         {eyebrow && <span className="pb-2 text-xs uppercase tracking-[0.2em] text-accent">{eyebrow}</span>}
       </div>
       {subtitle && <p className="mt-3 max-w-2xl text-muted">{subtitle}</p>}

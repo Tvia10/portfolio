@@ -41,7 +41,7 @@ export function ProjectDetail() {
           <Link to="/#projects" className="text-sm text-white/70 hover:text-white">
             ← Projects
           </Link>
-          <h1 className="mt-3 font-display text-5xl text-white sm:text-7xl">
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-6xl">
             {project.title}
           </h1>
         </div>

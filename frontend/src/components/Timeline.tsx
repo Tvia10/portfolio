@@ -22,7 +22,7 @@ export function Timeline({ items }: { items: Item[] }) {
           <p className="text-xs uppercase tracking-[0.2em] text-accent">
             {formatRange(item.start_date, item.end_date)}
           </p>
-          <h3 className="mt-1 font-display text-2xl text-ink">{item.title}</h3>
+          <h3 className="mt-1 text-lg font-semibold tracking-tight text-ink">{item.title}</h3>
           <p className="text-sm text-muted">{item.place}</p>
           {item.description && (
             <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>

@@ -39,14 +39,14 @@ function initials(name: string): string {
     .join('')
 }
 
-/** El apellido va en itálica: el toque "artístico" del hero. */
+/** El apellido va en gris: un contraste sutil en el nombre del hero. */
 function DisplayName({ name }: { name: string }) {
   const parts = name.split(' ')
   if (parts.length < 2) return <>{name}</>
   const last = parts.pop()
   return (
     <>
-      {parts.join(' ')} <em className="text-accent">{last}</em>
+      {parts.join(' ')} <span className="text-muted">{last}</span>
     </>
   )
 }
@@ -100,7 +100,7 @@ export function Home() {
       <section id="home" className="mx-auto w-full max-w-5xl px-5 pt-16 pb-20 sm:pt-24">
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">Portfolio · {new Date().getFullYear()}</p>
-          <h1 className="mt-6 font-display text-6xl leading-[0.95] text-ink sm:text-8xl">
+          <h1 className="mt-6 text-5xl font-bold leading-[0.95] tracking-tight text-ink sm:text-7xl">
             <DisplayName name={profile?.full_name ?? 'Your name'} />
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-base text-muted sm:text-lg">{profile?.headline}</p>
@@ -246,7 +246,7 @@ export function Home() {
               <div key={cert.id} className="rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-accent/40">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="font-display text-2xl text-ink">{cert.name}</h3>
+                    <h3 className="text-lg font-semibold tracking-tight text-ink">{cert.name}</h3>
                     <p className="text-sm text-muted">{cert.issuer}</p>
                   </div>
                   <span className="shrink-0 text-xs uppercase tracking-wider text-accent">
@@ -295,7 +295,7 @@ export function Home() {
             .filter((s): s is { value: number; label: string } => s !== null)
             .map((stat) => (
               <div key={stat.label}>
-                <p className="font-display text-6xl text-accent">{stat.value}</p>
+                <p className="text-5xl font-bold tracking-tight text-ink">{stat.value}</p>
                 <p className="mt-1 text-sm text-muted">{stat.label}</p>
               </div>
             ))}
@@ -305,10 +305,10 @@ export function Home() {
       {/* Contact — the one section that gets the oversized "Let's talk" treatment. */}
       <section id="contact" className="mx-auto w-full max-w-5xl px-5 py-24">
         <div className="flex items-center justify-between gap-6">
-          <h2 className="font-display text-6xl text-ink sm:text-8xl">
-            Let's <em className="text-accent">talk</em>
+          <h2 className="text-5xl font-bold tracking-tight text-ink sm:text-7xl">
+            Let's <span className="text-muted">talk</span>
           </h2>
-          <span className="hidden font-display text-6xl text-accent sm:block" aria-hidden="true">
+          <span className="hidden text-5xl text-ink sm:block" aria-hidden="true">
             →
           </span>
         </div>
@@ -322,7 +322,7 @@ export function Home() {
       <footer className="border-t border-line">
         <div className="mx-auto grid w-full max-w-5xl gap-10 px-5 py-14 sm:grid-cols-3">
           <div>
-            <p className="font-display text-2xl text-ink">{profile?.full_name}</p>
+            <p className="font-semibold text-ink">{profile?.full_name}</p>
             <p className="mt-2 text-sm text-muted">
               Ready to bring your ideas to life?
               <br />
@@ -341,7 +341,7 @@ export function Home() {
                 { href: '#contact', label: 'Contact' },
               ].map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="font-display text-2xl text-ink transition-colors hover:text-accent">
+                  <a href={link.href} className="text-lg font-semibold text-ink transition-colors hover:text-muted">
                     {link.label}
                   </a>
                 </li>

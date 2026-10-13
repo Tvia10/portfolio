@@ -60,7 +60,7 @@ export function Nav({ name, location }: { name: string; location?: string }) {
         }`}
       >
         <nav className="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-4">
-          <a href="#home" className="font-display text-xl text-ink">
+          <a href="#home" className="font-semibold tracking-tight text-ink">
             {name}
           </a>
 
@@ -101,7 +101,7 @@ export function Nav({ name, location }: { name: string; location?: string }) {
       {menuOpen && (
         <div className="fixed inset-0 z-50 flex flex-col bg-paper">
           <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-4">
-            <span className="font-display text-xl text-ink">{name}</span>
+            <span className="font-semibold tracking-tight text-ink">{name}</span>
             <button
               type="button"
               onClick={() => setMenuOpen(false)}
@@ -116,7 +116,7 @@ export function Nav({ name, location }: { name: string; location?: string }) {
             <a
               href="#home"
               onClick={() => setMenuOpen(false)}
-              className="font-display text-6xl text-ink transition-colors hover:text-accent hover:italic sm:text-8xl"
+              className="text-5xl font-bold tracking-tight text-ink transition-colors hover:text-muted sm:text-7xl"
             >
               Home
             </a>
@@ -125,7 +125,7 @@ export function Nav({ name, location }: { name: string; location?: string }) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="font-display text-6xl text-ink transition-colors hover:text-accent hover:italic sm:text-8xl"
+                className="text-5xl font-bold tracking-tight text-ink transition-colors hover:text-muted sm:text-7xl"
               >
                 {link.label}
               </a>

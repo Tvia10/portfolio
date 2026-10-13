@@ -21,7 +21,7 @@ export function ProjectCard({ project }: { project: Project }) {
       )}
 
       <div className="absolute inset-x-0 bottom-0 p-6">
-        <h3 className="font-display text-3xl text-white">{project.title}</h3>
+        <h3 className="text-2xl font-bold tracking-tight text-white">{project.title}</h3>
         {project.tech_stack[0] && (
           <p className="mt-1 text-xs uppercase tracking-[0.2em] text-white/60">{project.tech_stack[0]}</p>
         )}
