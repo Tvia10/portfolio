@@ -39,6 +39,18 @@ function initials(name: string): string {
     .join('')
 }
 
+/** El apellido va en itálica y color acento: el toque "artístico" del hero. */
+function DisplayName({ name }: { name: string }) {
+  const parts = name.split(' ')
+  if (parts.length < 2) return <>{name}</>
+  const last = parts.pop()
+  return (
+    <>
+      {parts.join(' ')} <em className="text-accent">{last}</em>
+    </>
+  )
+}
+
 function earliestYear(...lists: { start_date: string }[][]): number | null {
   const years = lists.flat().map((item) => Number(item.start_date.slice(0, 4)))
   return years.length ? Math.min(...years) : null
@@ -87,22 +99,23 @@ export function Home() {
       {/* Hero */}
       <section id="home" className="mx-auto w-full max-w-5xl px-5 pt-16 pb-20 sm:pt-24">
         <div className="text-center">
-          <h1 className="text-5xl font-bold tracking-tight text-ink sm:text-7xl">
-            {profile?.full_name ?? 'Your name'}
+          <p className="text-xs uppercase tracking-[0.3em] text-accent">Portfolio · {new Date().getFullYear()}</p>
+          <h1 className="mt-6 font-display text-6xl leading-[0.95] text-ink sm:text-8xl">
+            <DisplayName name={profile?.full_name ?? 'Your name'} />
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-muted sm:text-xl">{profile?.headline}</p>
+          <p className="mx-auto mt-6 max-w-xl text-base text-muted sm:text-lg">{profile?.headline}</p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#contact"
-              className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper transition-opacity hover:opacity-85"
+              className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-opacity hover:opacity-85"
             >
               Get in touch
             </a>
             {profile?.cv_url && (
               <a
                 href={profile.cv_url}
-                className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink"
+                className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
               >
                 Download CV
               </a>
@@ -130,12 +143,12 @@ export function Home() {
           </div>
         </div>
 
-        <div className="mx-auto mt-16 aspect-square w-56 overflow-hidden rounded-2xl border border-line bg-surface-2 shadow-sm sm:w-64">
+        <div className="group mx-auto mt-16 aspect-[4/5] w-56 overflow-hidden rounded-[2rem] border border-line bg-surface-2 p-2 sm:w-64">
           {profile?.avatar_url ? (
             <img
               src={profile.avatar_url}
               alt={profile.full_name}
-              className="h-full w-full object-cover"
+              className="h-full w-full rounded-[1.6rem] object-cover grayscale contrast-110 transition duration-700 group-hover:grayscale-0"
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center text-6xl font-bold text-muted">
@@ -149,9 +162,9 @@ export function Home() {
             {SPECIALTIES.map((s) => (
               <li key={s} className="flex items-center gap-2 text-sm text-ink">
                 <span className="flex items-end gap-[2px]" aria-hidden="true">
-                  <span className="h-1.5 w-[3px] bg-ink" />
-                  <span className="h-2.5 w-[3px] bg-ink" />
-                  <span className="h-2 w-[3px] bg-ink" />
+                  <span className="h-1.5 w-[3px] bg-accent" />
+                  <span className="h-2.5 w-[3px] bg-accent" />
+                  <span className="h-2 w-[3px] bg-accent" />
                 </span>
                 {s}
               </li>
@@ -182,7 +195,7 @@ export function Home() {
               .map((skill) => (
                 <span
                   key={skill.id}
-                  className="rounded-full border border-line bg-surface-2 px-4 py-2 text-sm text-ink"
+                  className="rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink transition-colors hover:border-accent/60 hover:text-accent"
                 >
                   {skill.name}
                 </span>
@@ -230,13 +243,13 @@ export function Home() {
         <Section id="certifications" title="Certifications">
           <div className="grid gap-5 sm:grid-cols-2">
             {certifications.map((cert) => (
-              <div key={cert.id} className="rounded-2xl border border-line bg-surface p-6">
+              <div key={cert.id} className="rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-accent/40">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="font-semibold text-ink">{cert.name}</h3>
+                    <h3 className="font-display text-2xl text-ink">{cert.name}</h3>
                     <p className="text-sm text-muted">{cert.issuer}</p>
                   </div>
-                  <span className="shrink-0 text-xs text-muted">
+                  <span className="shrink-0 text-xs uppercase tracking-wider text-accent">
                     {formatMonth(cert.issued_date)}
                   </span>
                 </div>
@@ -282,7 +295,7 @@ export function Home() {
             .filter((s): s is { value: number; label: string } => s !== null)
             .map((stat) => (
               <div key={stat.label}>
-                <p className="text-4xl font-bold tracking-tight text-ink">{stat.value}</p>
+                <p className="font-display text-6xl text-accent">{stat.value}</p>
                 <p className="mt-1 text-sm text-muted">{stat.label}</p>
               </div>
             ))}
@@ -292,8 +305,10 @@ export function Home() {
       {/* Contact — the one section that gets the oversized "Let's talk" treatment. */}
       <section id="contact" className="mx-auto w-full max-w-5xl px-5 py-24">
         <div className="flex items-center justify-between gap-6">
-          <h2 className="text-5xl font-bold tracking-tight text-ink sm:text-7xl">Let's talk</h2>
-          <span className="hidden text-5xl text-ink sm:block" aria-hidden="true">
+          <h2 className="font-display text-6xl text-ink sm:text-8xl">
+            Let's <em className="text-accent">talk</em>
+          </h2>
+          <span className="hidden font-display text-6xl text-accent sm:block" aria-hidden="true">
             →
           </span>
         </div>
@@ -307,7 +322,7 @@ export function Home() {
       <footer className="border-t border-line">
         <div className="mx-auto grid w-full max-w-5xl gap-10 px-5 py-14 sm:grid-cols-3">
           <div>
-            <p className="font-semibold text-ink">{profile?.full_name}</p>
+            <p className="font-display text-2xl text-ink">{profile?.full_name}</p>
             <p className="mt-2 text-sm text-muted">
               Ready to bring your ideas to life?
               <br />
@@ -326,7 +341,7 @@ export function Home() {
                 { href: '#contact', label: 'Contact' },
               ].map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-lg font-semibold text-ink hover:opacity-70">
+                  <a href={link.href} className="font-display text-2xl text-ink transition-colors hover:text-accent">
                     {link.label}
                   </a>
                 </li>

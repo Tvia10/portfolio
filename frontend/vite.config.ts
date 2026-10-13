@@ -9,7 +9,8 @@ export default defineConfig({
     // En dev el front pega a /api y Vite lo reenvia al backend local,
     // asi no hay CORS ni URLs distintas entre dev y produccion.
     proxy: {
-      '/api': { target: 'http://localhost:8000', changeOrigin: true },
+      // API_PROXY permite previsualizar contra otra API (ej. produccion).
+      '/api': { target: process.env.API_PROXY ?? 'http://localhost:8000', changeOrigin: true },
     },
   },
 })

@@ -32,7 +32,7 @@ export function Dashboard() {
           <Link to="/" className="text-muted hover:text-ink">
             View site ↗
           </Link>
-          <button onClick={logout} className="text-muted hover:text-red-600">
+          <button onClick={logout} className="text-muted hover:text-red-400">
             Log out
           </button>
         </div>

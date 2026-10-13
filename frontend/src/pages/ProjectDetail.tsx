@@ -1,18 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../lib/api'
+import { gradientFor } from '../lib/gradient'
 import type { Project } from '../types'
-
-function gradientFor(seed: string): string {
-  let hash = 0
-  for (let i = 0; i < seed.length; i++) {
-    hash = (hash << 5) - hash + seed.charCodeAt(i)
-    hash |= 0
-  }
-  const h1 = Math.abs(hash) % 360
-  const h2 = (h1 + 40) % 360
-  return `linear-gradient(135deg, hsl(${h1} 30% 16%), hsl(${h2} 35% 8%))`
-}
 
 export function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>()
@@ -51,7 +41,7 @@ export function ProjectDetail() {
           <Link to="/#projects" className="text-sm text-white/70 hover:text-white">
             ← Projects
           </Link>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="mt-3 font-display text-5xl text-white sm:text-7xl">
             {project.title}
           </h1>
         </div>
@@ -77,7 +67,7 @@ export function ProjectDetail() {
               href={project.live_url}
               target="_blank"
               rel="noreferrer noopener"
-              className="rounded-full bg-ink px-5 py-2.5 font-semibold text-paper hover:opacity-85"
+              className="rounded-full bg-accent px-5 py-2.5 font-semibold text-paper hover:opacity-85"
             >
               View live ↗
             </a>
@@ -87,7 +77,7 @@ export function ProjectDetail() {
               href={project.repo_url}
               target="_blank"
               rel="noreferrer noopener"
-              className="rounded-full border border-line px-5 py-2.5 font-semibold text-ink hover:border-ink"
+              className="rounded-full border border-line px-5 py-2.5 font-semibold text-ink hover:border-accent hover:text-accent"
             >
               Code ↗
             </a>

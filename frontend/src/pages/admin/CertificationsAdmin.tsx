@@ -82,7 +82,7 @@ export function CertificationsAdmin() {
                 >
                   Edit
                 </button>
-                <button onClick={() => remove(cert.id)} className="text-muted hover:text-red-600">
+                <button onClick={() => remove(cert.id)} className="text-muted hover:text-red-400">
                   Delete
                 </button>
               </div>
@@ -132,7 +132,7 @@ export function CertificationsAdmin() {
           />
         </label>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-sm text-red-400">{error}</p>}
 
         <div className="flex gap-3 pt-2">
           <button type="submit" className="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-paper">

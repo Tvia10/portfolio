@@ -48,7 +48,7 @@ export function Login() {
           className="mt-3 w-full rounded-xl border border-line bg-surface-2 px-4 py-2.5 text-sm text-ink focus:border-ink focus:outline-none"
         />
 
-        {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+        {error && <p className="mt-3 text-sm text-red-400">{error}</p>}
 
         <button
           type="submit"

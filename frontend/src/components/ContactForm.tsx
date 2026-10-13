@@ -71,11 +71,11 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper transition-opacity hover:opacity-85 disabled:opacity-50"
+          className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-opacity hover:opacity-85 disabled:opacity-50"
         >
           {status === 'sending' ? 'Sending...' : 'Send message'}
         </button>
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-sm text-red-400">{error}</p>}
       </div>
     </form>
   )
