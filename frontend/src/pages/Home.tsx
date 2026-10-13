@@ -28,7 +28,7 @@ const EMPTY: Data = {
 
 // A few headline specialties pulled straight from the real skill set, shown
 // as small tags in the hero — not every skill, just the top-level pitch.
-const SPECIALTIES = ['Backend Development', 'Frontend Development', 'AI Automation']
+const SPECIALTIES = ['Software Development', 'Cybersecurity', 'AI Automation']
 
 function initials(name: string): string {
   return name
